@@ -1,0 +1,23 @@
+// #hero-logo{
+//     width: 100%;
+//     height: 100% !important;
+//     position: absolute;
+//     top: 0;
+//     z-index: 999 !important;
+// }
+
+#hero-parent-container {
+  position: relative; /* This makes it the positioning context for absolutely positioned children */
+  z-index: 1; /* Ensure this stacks as expected against other page content */
+  overflow: hidden; /* Prevents any absolutely positioned children from overflowing */
+}
+
+#hero-logo {
+  border: 2px solid blue;
+  width: 100%;
+  height: 100%; /* This will now refer to the hero-parent-container's height */
+  position: absolute;
+  top: 0;
+  left: 0; /* Ensure it covers the entire parent */
+  z-index: 2; /* Higher than the parent container to overlay content */
+}
