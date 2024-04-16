@@ -89,6 +89,7 @@ export default function Hero() {
       <ScrollControls pages={6} damping={0.1}>
         <mesh>
           <Mesh />
+          <meshBasicMaterial/>
         </mesh>
         <pointLight />
         {/* <Logo scale={0.8} /> */}
