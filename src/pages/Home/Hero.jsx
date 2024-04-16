@@ -80,9 +80,7 @@ import {
   Html,
   OrbitControls,
 } from "@react-three/drei";
-import { Logo2 } from "../../components/ThreeD/Logo2";
 import Mesh from "../../components/ThreeD/Mesh";
-import { Testmodel } from "../../components/ThreeD/Testmodel";
 
 export default function Hero() {
   return (

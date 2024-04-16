@@ -2,8 +2,6 @@ import { useRef, useState } from "react";
 import { Canvas, useThree } from "@react-three/fiber";
 import "./Home.scss";
 import Hero from "./Hero";
-import ThreeD from "../../components/ThreeD/ThreeD";
-import { Logo } from "../../components/ThreeD/Logo";
 
 export default function Home() {
   return (
