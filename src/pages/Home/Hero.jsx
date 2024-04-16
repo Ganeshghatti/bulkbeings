@@ -87,12 +87,10 @@ export default function Hero() {
     <>
       <ambientLight intensity={0.2} />
       <ScrollControls pages={6} damping={0.1}>
-        {/* <Mesh /> */}
-        <pointLight/>
-        <OrbitControls autoRotate/>
         <mesh>
-          <meshBasicMaterial /> <boxGeometry />
+          <Mesh />
         </mesh>
+        <pointLight />
         {/* <Logo scale={0.8} /> */}
         <Scroll html>
           <section className="section"></section>
