@@ -1,43 +1,60 @@
-import { useScroll } from "@react-three/drei";
+import { Html, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import React, { useRef, useLayoutEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 
 const Mesh = (props) => {
   const group = useRef();
   const scroll = useScroll();
-  const tl = useRef();
+  const [particles, setParticles] = useState([]);
 
-  const radius = 0.1; // Radius of each sphere, more visible
-  const segments = 6; // Segments for the sphere
+  const radius = 0.01;
+  const SEPARATION = 0.05,
+    AMOUNTX = 150,
+    AMOUNTY = 40;
+  const waveAmplitude = 0.075; // Amplitude of the wave
+  const waveFrequency = 0.1; // Frequency of the wave
 
-  const positions = [
-    [-1, 1, 0], // Top-left corner
-    [1, 1, 0],  // Top-right corner
-    [-1, -1, 0], // Bottom-left corner
-    [1, -1, 0]  // Bottom-right corner
-  ];
-
-  useFrame((state, delta) => {
-    tl.current.seek(scroll.offset * tl.current.duration());
-  });
-
-  useLayoutEffect(() => {
-    tl.current = gsap.timeline({
-      defaults: { duration: 2, ease: "power1.inOut" },
-    });
-    tl.current
-      .to(group.current.position, { x: 0, y: 0, z: 0 }, 0); // Ensures the group is centered initially
+  useEffect(() => {
+    const initialParticles = [];
+    for (let ix = 0; ix < AMOUNTX; ix++) {
+      for (let iy = 0; iy < AMOUNTY; iy++) {
+        const posX = ix * SEPARATION - (AMOUNTX * SEPARATION) / 2;
+        const posY = iy * SEPARATION - (AMOUNTY * SEPARATION) / 2;
+        initialParticles.push({ id: `${ix}-${iy}`, pos: [posX, posY, 0] });
+      }
+    }
+    console.log(initialParticles);
+    setParticles(initialParticles);
   }, []);
 
+  useFrame((state, delta) => {
+    const newParticles = particles.map((particle) => {
+      const ix = parseInt(particle.id.split("-")[0], 10); // Extract ix from particle id
+      const z =
+        Math.sin(state.clock.elapsedTime + ix * waveFrequency) * waveAmplitude;
+      return { ...particle, pos: [particle.pos[0], particle.pos[1], z] };
+    });
+    setParticles(newParticles);
+  });
+
   return (
-    <group ref={group} {...props} position={[0, 0, 0]}>
-      {positions.map((pos, i) => (
-        <mesh key={i} position={pos}>
-          <sphereGeometry args={[radius, segments, segments]} />
-          <meshBasicMaterial color={0xff00ff} transparent opacity={0.5} />
-        </mesh>
-      ))}
+    <group
+      ref={group}
+      {...props}
+      position={[-0.25, 0.5, 3.4]}
+      rotation={[-12, 0, 0.05]}
+    >
+      {particles.length > 0 && (
+        <>
+          {particles.map((particle) => (
+            <mesh key={particle.id} position={particle.pos}>
+              <sphereGeometry args={[radius]} />
+              <meshBasicMaterial color="#ff00ff" transparent opacity={0.5} />
+            </mesh>
+          ))}
+        </>
+      )}
     </group>
   );
 };

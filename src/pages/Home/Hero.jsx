@@ -78,23 +78,16 @@ import {
   Float,
   Ring,
   Html,
+  OrbitControls,
 } from "@react-three/drei";
 import { Logo2 } from "../../components/ThreeD/Logo2";
 import Mesh from "../../components/ThreeD/Mesh";
+import { Testmodel } from "../../components/ThreeD/Testmodel";
 
 export default function Hero() {
   return (
     <>
       <ambientLight intensity={0.2} />
-      <spotLight
-        position={[0, 25, 0]}
-        angle={1.3}
-        penumbra={1}
-        castShadow
-        intensity={2}
-        shadow-bias={-0.0001}
-      />
-
       <ScrollControls pages={6} damping={0.1}>
         <Mesh />
         <Logo scale={0.8} />
