@@ -1,88 +1,112 @@
-import { useEffect, useState, useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Logo } from "../../components/ThreeD/Logo";
+// import { useEffect, useState, useLayoutEffect, useRef } from "react";
+// import gsap from "gsap";
+// import ScrollTrigger from "gsap/ScrollTrigger";
+// import { Canvas, useFrame, useThree } from "@react-three/fiber";
+// import { Logo } from "../../components/ThreeD/Logo";
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
+
+// export default function Hero() {
+//   const logoRef = useRef();
+
+//   useEffect(() => {
+//     // Make sure the logoRef is not undefined and ScrollTrigger is ready
+//     if (!logoRef.current) return;
+//     gsap.to(logoRef.current.position, {
+//       scrollTrigger: {
+//         trigger: "#hero2",
+//         start: "top 70%",
+//         end: "bottom 90%",
+//         scrub: 1,
+//         markers: true,
+//       },
+//       ease: "power1.out",
+//       duration: 2,
+//       y: 1.25,
+//     });
+//   }, [logoRef.current]);
+
+//   useEffect(() => {
+//     if (!logoRef.current) return;
+
+//     console.log(logoRef.current.position);
+//   }, [logoRef.current]);
+
+//   return (
+//     <div id="hero-parent-container" className="relative">
+//       <div id="hero-container" className="flex flex-col relative">
+//         <section id="hero1" className="w-full h-screen border-red">
+//           <h1>Hero section</h1>
+//         </section>
+//         <section id="hero2" className="w-full h-screen border-red">
+//           <h1>Empty section</h1>
+//         </section>
+//         <section id="hero3" className="w-full h-screen border-red">
+//           <h1>5 Number Points</h1>
+//         </section>
+//         <section id="hero4" className="w-full h-screen border-red">
+//           <h1>5 Points section</h1>
+//         </section>
+//       </div>
+//       <div id="hero-logo" className="border">
+//         <Canvas shadows>
+//           <spotLight />
+//           <ambientLight intensity={1} />
+//           <directionalLight
+//             position={[10, 10, 10]}
+//             angle={0.15}
+//             penumbra={3}
+//             castShadow
+//             shadow-mapSize={[2024, 2024]}
+//           />
+//           <pointLight position={[10, 0, 0]} />
+//           <Logo ref={logoRef} position={[0, 2.5, 0]} scale={0.3} />
+//         </Canvas>
+//       </div>
+//     </div>
+//   );
+// }
+import React, { useEffect } from "react";
+import { Logo } from "../../components/ThreeD/Logo";
+import {
+  RoundedBox,
+  ScrollControls,
+  Scroll,
+  Environment,
+  Sparkles,
+  Backdrop,
+  Float,
+  Ring,
+  Html,
+} from "@react-three/drei";
+import { Logo2 } from "../../components/ThreeD/Logo2";
+import Mesh from "../../components/ThreeD/Mesh";
 
 export default function Hero() {
-  const logoRef = useRef();
-
-  useEffect(() => {
-    // Make sure the logoRef is not undefined and ScrollTrigger is ready
-    if (!logoRef.current) return;
-
-    // Assuming vertical (y) movement for #hero2
-    gsap.to(logoRef.current.position, {
-      scrollTrigger: {
-        trigger: "#hero2",
-        start: "top center",
-        end: "bottom bottom",
-        scrub: true,
-        markers: true,
-      },
-      y: 1.25, // Move upwards as we scroll down; adjust value as needed
-    });
-
-    // Assuming horizontal (x) movement for #hero3
-    gsap.to(logoRef.current.position, {
-      scrollTrigger: {
-        trigger: "#hero3",
-        start: "top center",
-        end: "bottom bottom",
-        scrub: true,
-        markers: true,
-      },
-      y: -1,
-      x: 1, // Move to the right; adjust value as needed
-    });
-
-    // For #hero4, combining vertical and horizontal movement
-    gsap.to(logoRef.current.position, {
-      scrollTrigger: {
-        trigger: "#hero4",
-        start: "top center",
-        end: "bottom bottom",
-        scrub: true,
-        markers: true,
-      },
-      x: -1, // Move to the left; adjust value as needed
-      y: 2.5, // Move further up; adjust value as needed
-    });
-  }, [logoRef.current]); // Depend on logoRef.current to re-trigger effect if it changes
-
   return (
-    <div id="hero-parent-container" className="relative">
-      <div id="hero-container" className="flex flex-col relative">
-        <section id="hero1" className="w-full h-screen border-red">
-          <h1>Hero section</h1>
-        </section>
-        <section id="hero2" className="w-full h-screen border-red">
-          <h1>Empty section</h1>
-        </section>
-        <section id="hero3" className="w-full h-screen border-red">
-          <h1>5 Number Points</h1>
-        </section>
-        <section id="hero4" className="w-full h-screen border-red">
-          <h1>5 Points section</h1>
-        </section>
-      </div>
-      <div id="hero-logo" className="border">
-        <Canvas shadows>
-          <spotLight />
-          <ambientLight intensity={1} />
-          <directionalLight
-            position={[10, 10, 10]}
-            angle={0.15}
-            penumbra={3}
-            castShadow
-            shadow-mapSize={[2024, 2024]}
-          />
-          <pointLight position={[10, 0, 0]} />
-          <Logo ref={logoRef} position={[0, 2.5, 0]} scale={0.2} />
-        </Canvas>
-      </div>
-    </div>
+    <>
+      <ambientLight intensity={0.2} />
+      <spotLight
+        position={[0, 25, 0]}
+        angle={1.3}
+        penumbra={1}
+        castShadow
+        intensity={2}
+        shadow-bias={-0.0001}
+      />
+
+      <ScrollControls pages={6} damping={0.1}>
+        <Mesh />
+        <Logo scale={0.8} />
+        <Scroll html>
+          <section className="section"></section>
+          <section className="section"></section>
+          <section className="section"></section>
+          <section className="section"></section>
+          <section className="section"></section>
+          <section className="section"></section>
+        </Scroll>
+      </ScrollControls>
+    </>
   );
 }

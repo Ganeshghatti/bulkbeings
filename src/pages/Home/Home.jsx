@@ -8,10 +8,9 @@ import { Logo } from "../../components/ThreeD/Logo";
 export default function Home() {
   return (
     <div className="home" id="home">
-      <Hero />
-      <section className="h-screen w-full">
-        <h1>Another section</h1>
-      </section>
+      <Canvas shadows className="canvas" style={{ height: "100%" }}>
+        <Hero />
+      </Canvas>
     </div>
   );
 }

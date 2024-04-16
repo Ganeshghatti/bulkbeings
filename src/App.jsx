@@ -16,7 +16,6 @@ export default function App() {
           path="/case-studies/:case-study-name"
           element={<CaseStudies />}
         />
-        
       </Routes>
     </BrowserRouter>
   );
