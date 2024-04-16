@@ -67,7 +67,7 @@
 //   );
 // }
 import React, { useEffect } from "react";
-import { Logo } from "../../components/ThreeD/Logo";
+// import { Logo } from "../../components/ThreeD/Logo";
 import {
   RoundedBox,
   ScrollControls,
@@ -90,7 +90,7 @@ export default function Hero() {
       <ambientLight intensity={0.2} />
       <ScrollControls pages={6} damping={0.1}>
         <Mesh />
-        <Logo scale={0.8} />
+        {/* <Logo scale={0.8} /> */}
         <Scroll html>
           <section className="section"></section>
           <section className="section"></section>
