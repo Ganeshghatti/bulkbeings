@@ -29,13 +29,13 @@ const Mesh = (props) => {
   }, []);
 
   useFrame((state, delta) => {
-    const newParticles = particles.map((particle) => {
-      const ix = parseInt(particle.id.split("-")[0], 10); // Extract ix from particle id
-      const z =
-        Math.sin(state.clock.elapsedTime + ix * waveFrequency) * waveAmplitude;
-      return { ...particle, pos: [particle.pos[0], particle.pos[1], z] };
-    });
-    setParticles(newParticles);
+    // const newParticles = particles.map((particle) => {
+    //   const ix = parseInt(particle.id.split("-")[0], 10); // Extract ix from particle id
+    //   const z =
+    //     Math.sin(state.clock.elapsedTime + ix * waveFrequency) * waveAmplitude;
+    //   return { ...particle, pos: [particle.pos[0], particle.pos[1], z] };
+    // });
+    // setParticles(newParticles);
   });
 
   return (
