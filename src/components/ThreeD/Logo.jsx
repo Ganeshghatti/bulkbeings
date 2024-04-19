@@ -16,13 +16,17 @@ export function Logo(props) {
   const scroll = useScroll();
   const tl = useRef();
 
+  useEffect(() => {
+    console.log(scroll.scroll.current);
+  }, [scroll.scroll.current]);
+
   useFrame((state, delta) => {
     tl.current.seek(scroll.offset * tl.current.duration());
   });
 
   useLayoutEffect(() => {
     tl.current = gsap.timeline({
-      defaults: { duration: 2, ease: "power1.inOut" },
+      defaults: { duration: 2,  ease: "power1.inOut" },
     });
     tl.current
       // .to(group.current.rotation, { y: -1 }, 2)

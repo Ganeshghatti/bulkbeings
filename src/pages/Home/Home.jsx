@@ -1,45 +1,66 @@
-import React, { Component } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { Logo } from "../../components/ThreeD/Logo";
+import {
+  motion,
+  useInView,
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import {
+  RoundedBox,
+  ScrollControls,
+  Scroll,
+  Environment,
+  Sparkles,
+  Backdrop,
+  Float,
+  Ring,
+  Html,
+  OrbitControls,
+} from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { ScrollControls, Scroll } from "@react-three/drei";
-import UseInView from "./Useinview";
-import DotsAnimated from "../../components/svg/DotsAnimated";
-import SpaceshipTest from "../../components/svg/SpaceshipTest";
-import Mesh from "../../components/svg/Mesh";
+import "./Home.scss";
 
-class Home extends Component {
-  state = {
-    isInView: false,
-  };
+export default function Home() {
+  const { scrollYProgress } = useScroll();
 
-  handleInViewChange = (isInView) => {
-    this.setState({ isInView });
-  };
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    console.log(latest);
+  });
 
-  render() {
-    return (
-      <Canvas>
-        <ambientLight intensity={1} />
-        <ScrollControls pages={6} damping={0.25}>
-          <Scroll html>
-            <div className="w-screen">
-              <section className="section">
-                <div className="w-full h-1/2">
-                  <Mesh isInView={this.state.isInView} />
-                </div>
-              </section>
-              <section className="section">
-                <UseInView onChange={this.handleInViewChange} />
-              </section>
-              <section className="section"></section>
-              <section className="section"></section>
-              <section className="section"></section>
-              <section className="section"></section>
-            </div>
-          </Scroll>
-        </ScrollControls>
-      </Canvas>
-    );
-  }
+  const background = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["#FFFFFF", "#6366F1"]
+  );
+  return (
+    <Canvas>
+      <ambientLight intensity={1} />
+      <ScrollControls pages={6} damping={0.25}>
+        {/* <Logo /> */}
+        <Scroll html>
+          <div className="w-screen">
+            <section className="section">
+              <motion.div
+                style={{
+                  scaleX: scrollYProgress,
+                  background,
+                  x: "-50%",
+                  y: "-5%",
+                }}
+                className="fixed left-1/2 top-1/3 h-4 w-screen bg-indigo-500"
+              />
+            </section>
+            <section className="section"></section>
+            <section className="section"></section>
+            <section className="section"></section>
+            <section className="section"></section>
+            <section className="section"></section>
+          </div>
+        </Scroll>
+      </ScrollControls>
+    </Canvas>
+  );
 }
 
-export default Home;

@@ -2,11 +2,7 @@ import React from "react";
 
 export default function SpaceshipTest() {
   return (
-    <svg
-      viewBox="0 0 1315 1773"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 1315 1773" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g id="spaceship">
         <g id="Power">
           <path

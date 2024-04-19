@@ -1,13 +1,55 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef, useEffect, useLayoutEffect } from "react";
+import { useGLTF, useAnimations, useScroll } from "@react-three/drei";
+import gsap from "gsap";
+import { useFrame } from "@react-three/fiber";
 
-export default function Mesh({ isInView }) {
-  console.log(isInView);
+export default function Mesh() {
+  const particles = useRef();
+  const scroll = useScroll();
+  const tl = useRef();
+
+  useEffect(() => {
+    console.log(scroll);
+  }, [scroll]);
+
+  useFrame((state, delta) => {
+    tl.current.seek(scroll.offset * tl.current.duration());
+  });
+
+  useLayoutEffect(() => {
+    tl.current = gsap.timeline({
+      defaults: { duration: 2, ease: "power1.inOut" },
+    });
+    tl.current
+      // .to(particles.current.rotation, { y: -1 }, 2)
+      .to(particles.current.position, { x: 1 }, 2)
+
+      // .to(particles.current.rotation, { y: 1 }, 6)
+      .to(particles.current.position, { x: -1 }, 6)
+
+      // .to(particles.current.rotation, { y: 0 }, 11)
+      // .to(particles.current.rotation, { x: 1 }, 11)
+      .to(particles.current.position, { x: 0 }, 11)
+
+      // .to(particles.current.rotation, { y: 0 }, 13)
+      // .to(particles.current.rotation, { x: -1 }, 13)
+      .to(particles.current.position, { x: 0 }, 13)
+
+      // .to(particles.current.rotation, { y: 0 }, 16)
+      // .to(particles.current.rotation, { x: 0 }, 16)
+      .to(particles.current.position, { x: 0 }, 16)
+
+      // .to(particles.current.rotation, { y: 0 }, 20)
+      // .to(particles.current.rotation, { x: 0 }, 20)
+      .to(particles.current.position, { x: 0 }, 20);
+  }, []);
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
       viewBox="0 0 1920 1080"
+      ref={ref}
     >
       <g
         id="ViewLayer_LineSet"
@@ -20,18 +62,17 @@ export default function Mesh({ isInView }) {
           inkscape:label="frame_0000"
         >
           <g inkscape:groupmode="layer" id="strokes" inkscape:label="strokes">
-            <motion.path
+            <path
               fill="none"
               strokeWidth={5.899998664855957}
               strokeLinecap="round"
               strokeOpacity={1}
               stroke="rgb(255, 27, 0)"
               strokeLinejoin="round"
-              d=" M 1822.332, 668.656 1822.253, 668.708 1821.024, 669.293 1819.376, 669.743 1817.473, 670.013 1815.499, 670.077 1813.645, 669.929 1813.466, 669.904 1811.914, 669.562 1810.814, 669.062 1810.274, 668.452 1810.347, 667.791 1811.028, 667.143 1811.118, 667.086 1812.342, 666.512 1813.989, 666.066 1815.899, 665.793 1817.885, 665.719 1819.749, 665.854 1819.907, 665.875 1821.467, 666.206 1822.569, 666.705 1823.105, 667.321 1823.022, 667.993 1822.332, 668.656 "
-              animate={{ y: isInView ? [0, 600, 0] : [0] }}
-              transition={{ duration: 2, repeatCount: "infinity" }}
+              d=" M 1822.332, 668.656 1822.253, 668.708 1821.024, 669.293 1819.376, 669.743 1817.473, 670.013 1815.499, 670.077 1813.645, 669.929 1813.466, 669.904 1811.914, 669.562 1810.814, 669.062 1810.274, 668.452 1810.347, 667.791 1811.028, 667.143 1811.118, 667.086 1812.342, 666.512 1813.989, 666.066 1815.899, 665.793 1817.885, 665.719 1819.749, 665.854 1819.907, 665.875 1821.467, 666.206 1822.569, 666.705 1823.105, 667.321 1823.022, 667.993 1822.332, 668.656"
             />
-            <motion.path
+
+            <path
               fill="none"
               strokeWidth={5.899998664855957}
               strokeLinecap="round"

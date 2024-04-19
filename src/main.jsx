@@ -7,6 +7,6 @@ import HomeTest from "./pages/Home/HomeTest.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-      <Home />
+      <HomeTest />
   </React.StrictMode>
 );
