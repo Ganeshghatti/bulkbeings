@@ -1,41 +1,45 @@
-import { useRef, useState } from "react";
-import { Canvas, useThree } from "@react-three/fiber";
-import "./Home.scss";
-import Hero from "./Hero";
+import React, { Component } from "react";
+import { Canvas } from "@react-three/fiber";
+import { ScrollControls, Scroll } from "@react-three/drei";
+import UseInView from "./Useinview";
+import DotsAnimated from "../../components/svg/DotsAnimated";
+import SpaceshipTest from "../../components/svg/SpaceshipTest";
+import Mesh from "../../components/svg/Mesh";
 
-export default function Home() {
-  return (
-    <div className="home" id="home">
-      <Canvas shadows className="canvas" style={{ height: "100%" }}>
-        <Hero />
+class Home extends Component {
+  state = {
+    isInView: false,
+  };
+
+  handleInViewChange = (isInView) => {
+    this.setState({ isInView });
+  };
+
+  render() {
+    return (
+      <Canvas>
+        <ambientLight intensity={1} />
+        <ScrollControls pages={6} damping={0.25}>
+          <Scroll html>
+            <div className="w-screen">
+              <section className="section">
+                <div className="w-full h-1/2">
+                  <Mesh isInView={this.state.isInView} />
+                </div>
+              </section>
+              <section className="section">
+                <UseInView onChange={this.handleInViewChange} />
+              </section>
+              <section className="section"></section>
+              <section className="section"></section>
+              <section className="section"></section>
+              <section className="section"></section>
+            </div>
+          </Scroll>
+        </ScrollControls>
       </Canvas>
-    </div>
-  );
+    );
+  }
 }
 
-// export default function Home() {
-//   const ref = useRef();
-//   return (
-//     <div ref={ref} className="container">
-//       <div className="text">
-//         "But afterwards there occurred violent earthquakes and floods; and in a
-//         single day and night of rain all your warlike men in a body sank into
-//         the earth, and the island of Atlantis in like manner disappeared, and
-//         was sunk beneath the sea."
-//       </div>
-//       <Canvas shadows eventSource={ref}>
-//         <spotLight />
-//         <ambientLight intensity={1} />
-//         <directionalLight
-//           position={[10, 10, 10]}
-//           angle={0.15}
-//           penumbra={3}
-//           castShadow
-//           shadow-mapSize={[2024, 2024]}
-//         />
-//         <pointLight position={[10, 0, 0]} />
-//         <Logo />
-//       </Canvas>
-//     </div>
-//   );
-// }
+export default Home;
