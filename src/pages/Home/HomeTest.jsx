@@ -25,31 +25,21 @@ import Mesh from "../../components/svg/Mesh";
 import SpaceshipTest from "../../components/svg/SpaceshipTest";
 import { SpaceShipSvg } from "../../components/svg/SpaceShipSvg";
 import DotsAnimated from "../../components/svg/DotsAnimated";
+import { Bulk_logo } from "../../components/ThreeD/Bulk_logo";
+import MeshBlender from "../../components/svg/MeshBlender";
 
 export default function Home() {
-  const { scrollYProgress } = useScroll();
-
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    console.log(latest);
-  });
-
-  const background = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ["#FFFFFF", "#6366F1"]
-  );
   return (
     <Canvas>
-      <ambientLight intensity={1} />
+      <spotLight/>
       <ScrollControls pages={6} damping={0.25}>
-        <Logo />
-
+        {/* <Logo /> */}
+        {/* <Bulk_logo /> */}
         <Scroll html>
           <div className="w-screen">
-            <div className="w-full h-64 absolute">
-              <DotsAnimated />
+            <div className="w-full fixed border">
+              <MeshBlender/>
             </div>
-
             <section className="section"></section>
             <section className="section"></section>
             <section className="section"></section>

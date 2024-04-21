@@ -26,7 +26,7 @@ export function Logo(props) {
 
   useLayoutEffect(() => {
     tl.current = gsap.timeline({
-      defaults: { duration: 2,  ease: "power1.inOut" },
+      defaults: { duration: 2,  ease: "power1.inOut"},
     });
     tl.current
       // .to(group.current.rotation, { y: -1 }, 2)
