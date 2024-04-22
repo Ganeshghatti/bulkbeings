@@ -31,17 +31,18 @@ import MeshBlender from "../../components/svg/MeshBlender";
 export default function Home() {
   return (
     <Canvas>
-      <spotLight/>
+      <spotLight />
       <ScrollControls pages={6} damping={0.25}>
         {/* <Logo /> */}
         {/* <Bulk_logo /> */}
         <Scroll html>
           <div className="w-screen">
-            <div className="w-full fixed border">
-              <MeshBlender/>
-            </div>
-            <section className="section"></section>
-            <section className="section"></section>
+            <section className="section">
+              <div className="w-full">
+                <MeshBlender />
+              </div>
+            </section>
+            <section className="section" id="section2"></section>
             <section className="section"></section>
             <section className="section"></section>
             <section className="section"></section>
