@@ -27,6 +27,8 @@ import { SpaceShipSvg } from "../../components/svg/SpaceShipSvg";
 import DotsAnimated from "../../components/svg/DotsAnimated";
 import { Bulk_logo } from "../../components/ThreeD/Bulk_logo";
 import MeshBlender from "../../components/svg/MeshBlender";
+import mesh from "../../components/json/mesh.json"
+import Lottie from "lottie-react";
 
 export default function Home() {
   return (
@@ -39,7 +41,8 @@ export default function Home() {
           <div className="w-screen">
             <section className="section">
               <div className="w-full h-1/2">
-                <MeshBlender />
+                {/* <MeshBlender /> */}
+                <Lottie animationData={mesh} loop={true} />
               </div>
             </section>
             <section className="section" id="section2"></section>
