@@ -38,7 +38,7 @@ export default function Home() {
         <Scroll html>
           <div className="w-screen">
             <section className="section">
-              <div className="w-full">
+              <div className="w-full h-1/2">
                 <MeshBlender />
               </div>
             </section>
