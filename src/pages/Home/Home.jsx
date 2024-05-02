@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Logo } from "../../components/ThreeD/Logo";
 import {
   motion,
   useInView,
@@ -21,46 +20,31 @@ import {
 } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import "./Home.scss";
+import Mesh from "../../components/svg/Mesh";
+import SpaceshipTest from "../../components/svg/SpaceshipTest";
+import { SpaceShipSvg } from "../../components/svg/SpaceShipSvg";
+import DotsAnimated from "../../components/svg/DotsAnimated";
+import MeshBlender from "../../components/svg/MeshBlender";
+import mesh from "../../components/json/mesh.json";
+import { Bulk_logo1 } from "../../components/ThreeD/Logo";
+import Hero from "./Components/Hero";
+import { Basiclogo } from "../../components/ThreeD/Basiclogo";
+import { Basiclogo2 } from "../../components/ThreeD/Basiclogo2";
+import { Basiclogo3 } from "../../components/ThreeD/BasiclogoScrollControls";
+import Numbers from "./Components/Numbers";
+import HomeComponents from "./HomeComponents";
 
 export default function Home() {
-  const { scrollYProgress } = useScroll();
-
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    console.log(latest);
-  });
-
-  const background = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ["#FFFFFF", "#6366F1"]
-  );
   return (
     <Canvas>
-      <ambientLight intensity={1} />
-      <ScrollControls pages={6} damping={0.25}>
-        {/* <Logo /> */}
+      <ScrollControls pages={11} damping={0.25}>
+        <spotLight color="#B93D0A" position={[0, 10, 10]} intensity={1} />
+        <ambientLight />
+        <Basiclogo3 />
         <Scroll html>
-          <div className="w-screen">
-            <section className="section">
-              <motion.div
-                style={{
-                  scaleX: scrollYProgress,
-                  background,
-                  x: "-50%",
-                  y: "-5%",
-                }}
-                className="fixed left-1/2 top-1/3 h-4 w-screen bg-indigo-500"
-              />
-            </section>
-            <section className="section"></section>
-            <section className="section"></section>
-            <section className="section"></section>
-            <section className="section"></section>
-            <section className="section"></section>
-          </div>
+          <HomeComponents />
         </Scroll>
       </ScrollControls>
     </Canvas>
   );
 }
-

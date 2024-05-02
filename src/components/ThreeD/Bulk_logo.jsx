@@ -27,7 +27,7 @@ export function Bulk_logo(props) {
 
   useLayoutEffect(() => {
     tl.current = gsap.timeline({
-      defaults: { duration: 2, ease: "power1.inOut", x:-4 },
+      defaults: { duration: 2, ease: "power1.inOut", x: -4 },
     });
     tl.current
       // .to(group.current.rotation, { y: -1 }, 2)

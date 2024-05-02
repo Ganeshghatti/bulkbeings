@@ -1,58 +1,59 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Logo } from "../../components/ThreeD/Logo";
-import {
-  motion,
-  useInView,
-  useMotionValueEvent,
-  useScroll,
-  useTransform,
-} from "framer-motion";
-import {
-  RoundedBox,
-  ScrollControls,
-  Scroll,
-  Environment,
-  Sparkles,
-  Backdrop,
-  Float,
-  Ring,
-  Html,
-  OrbitControls,
-} from "@react-three/drei";
+// import React, { useRef, useEffect, useState } from "react";
+// import { Canvas } from "@react-three/fiber";
+// import "./Home.scss";
+// import HomeComponents from "./HomeComponents";
+// import { Basiclogo4 } from "../../components/ThreeD/BasicLogo4";
+
+// export default function Home() {
+//   const contentRef = useRef(null);
+//   const [canvasHeight, setCanvasHeight] = useState("100vh");
+
+//   useEffect(() => {
+//     const handleResize = () => {
+//       if (contentRef.current) {
+//         setCanvasHeight(`${contentRef.current.scrollHeight}px`);
+//       }
+//     };
+
+//     // Calculate height on mount and update on window resize
+//     handleResize();
+//     window.addEventListener("resize", handleResize);
+
+//     return () => window.removeEventListener("resize", handleResize);
+//   }, []);
+
+//   return (
+//     <div ref={contentRef} style={{ position: "relative" }}>
+//       <Canvas className="canvas" style={{ height: canvasHeight }} shadows>
+//         <ambientLight />
+//         <spotLight color="#B93D0A" position={[0, 10, 10]} intensity={1} />
+//         <Basiclogo4 />
+//       </Canvas>
+//       <div className="absolute top-0 z-10 flex flex-col">
+//         <HomeComponents />
+//       </div>
+//     </div>
+//   );
+// }
+import React, { useRef, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import "./Home.scss";
-import Mesh from "../../components/svg/Mesh";
-import SpaceshipTest from "../../components/svg/SpaceshipTest";
-import { SpaceShipSvg } from "../../components/svg/SpaceShipSvg";
-import DotsAnimated from "../../components/svg/DotsAnimated";
-import { Bulk_logo } from "../../components/ThreeD/Bulk_logo";
-import MeshBlender from "../../components/svg/MeshBlender";
-import mesh from "../../components/json/mesh.json"
-import Lottie from "lottie-react";
+import HomeComponents from "./HomeComponents";
+import { Basiclogo4 } from "../../components/ThreeD/BasicLogo4";
 
 export default function Home() {
+  const contentRef = useRef(null);
+  const [canvasHeight, setCanvasHeight] = useState("100vh");
   return (
-    <Canvas>
-      <spotLight />
-      <ScrollControls pages={6} damping={0.25}>
-        {/* <Logo /> */}
-        {/* <Bulk_logo /> */}
-        <Scroll html>
-          <div className="w-screen">
-            <section className="section">
-              <div className="w-full h-1/2">
-                {/* <MeshBlender /> */}
-                <Lottie animationData={mesh} loop={true} />
-              </div>
-            </section>
-            <section className="section" id="section2"></section>
-            <section className="section"></section>
-            <section className="section"></section>
-            <section className="section"></section>
-            <section className="section"></section>
-          </div>
-        </Scroll>
-      </ScrollControls>
-    </Canvas>
+    <div ref={contentRef} className="root">
+      <Canvas className="canvas" shadows flat linear>
+        <ambientLight />
+        <spotLight color="#B93D0A" position={[0, 10, 10]} intensity={1} />
+        <Basiclogo4 />{" "}
+      </Canvas>
+      <div className="absolute top-0 z-10 flex flex-col">
+        <HomeComponents />
+      </div>{" "}
+    </div>
   );
 }

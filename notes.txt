@@ -1,0 +1,49 @@
+    // tl.current = gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: ".canvas",
+    //     start: "top center",
+    //     end: "bottom center",
+    //     scrub: true,
+    //     markers: true,
+    //   },
+    // });
+
+    // // Animation sequence with synchronized position and rotation changes
+    // tl.current
+    //   .to(group.current.position, { y: 2, ease: "none", duration: 1 })
+    //   .to(
+    //     group.current.rotation,
+    //     { y: Math.PI, ease: "none", duration: 1 },
+    //     2
+    //   )
+    //   .to(group.current.position, { x: 0.4, ease: "none", duration: 1 }, "2");
+
+    // // Further synchronized movements
+    // tl.current
+    //   .to(group.current.position, {
+    //     y: 5,
+    //     x: -0.4,
+    //     ease: "none",
+    //     duration: 2.5,
+    //   })
+    //   .to(
+    //     group.current.rotation,
+    //     { x: Math.PI / 4, ease: "none", duration: 2.5 },
+    //     "4"
+    //   );
+
+    // // Final move
+    // tl.current
+    //   .to(group.current.position, { y: 10, ease: "none", duration: 2 })
+    //   .to(
+    //     group.current.rotation,
+    //     { z: Math.PI / 2, ease: "none", duration: 2 },
+    //     8
+    //   );
+
+    // return () => {
+    //   if (tl.current) {
+    //     tl.current.kill();
+    //   }
+    //   ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    // };

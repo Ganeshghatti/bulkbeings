@@ -8,22 +8,17 @@ import { useGLTF, useAnimations, useScroll } from "@react-three/drei";
 import gsap from "gsap";
 import { useFrame } from "@react-three/fiber";
 
-export function Logo(props) {
+export function Bulk_logo1(props) {
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF(
-    "./public/assets/model/logo.glb"
-  );
   const scroll = useScroll();
   const tl = useRef();
-
-  useEffect(() => {
-    console.log(scroll.scroll.current);
-  }, [scroll.scroll.current]);
-
+  const { nodes, materials, animations } = useGLTF(
+    "./public/assets/model/bulk_logo1.glb"
+  );
+  const { actions } = useAnimations(animations, group);
   useFrame((state, delta) => {
     tl.current.seek(scroll.offset * tl.current.duration());
   });
-
   useLayoutEffect(() => {
     tl.current = gsap.timeline({
       defaults: { duration: 2,  ease: "power1.inOut"},
@@ -51,68 +46,37 @@ export function Logo(props) {
       // .to(group.current.rotation, { x: 0 }, 20)
       .to(group.current.position, { x: 0 }, 20);
   }, []);
-
-  // const { actions, names } = useAnimations(animations, group);
-  // useEffect(() => {
-  //   actions[names[0]].reset().fadeIn(0.5).play();
-  // }, []);
-
   return (
     <group ref={group} {...props} dispose={null}>
-      <group name="Scene">
-        <group name="Empty">
-          <group
-            name="Left_semi"
-            rotation={[-Math.PI / 2, 0, Math.PI]}
-            scale={[1, 0.25, 1]}
-          >
-            <mesh
-              name="Cylinder002"
-              geometry={nodes.Cylinder002.geometry}
-              material={materials.Orange_Glass_tex}
-            />
-            <mesh
-              name="Cylinder002_1"
-              geometry={nodes.Cylinder002_1.geometry}
-              material={materials.Orange_Glass_tex}
-            />
-          </group>
-          <group
-            name="Middle"
-            rotation={[Math.PI / 2, 0, 0]}
-            scale={[1, 0.25, 1]}
-          >
-            <mesh
-              name="Cylinder003"
-              geometry={nodes.Cylinder003.geometry}
-              material={materials.Orange_Glass_tex}
-            />
-            <mesh
-              name="Cylinder003_1"
-              geometry={nodes.Cylinder003_1.geometry}
-              material={materials.Orange_Glass_tex}
-            />
-          </group>
-          <group
-            name="Right_semi"
-            rotation={[Math.PI / 2, 0, 0]}
-            scale={[1, 0.25, 1]}
-          >
-            <mesh
-              name="Cylinder"
-              geometry={nodes.Cylinder.geometry}
-              material={materials.Orange_Glass_tex}
-            />
-            <mesh
-              name="Cylinder_1"
-              geometry={nodes.Cylinder_1.geometry}
-              material={materials.Orange_Glass_tex}
-            />
-          </group>
-        </group>
+      <group name="Scene" scale={1.5}>
+        <group name="Empty" position={[-2.343, -0.832, 0]} scale={0.97} />
+        <group name="Empty001" position={[-2.343, -0.832, 0]} scale={0.97} />
+        <group
+          name="Area_001"
+          position={[0.03, 1.11, 2.129]}
+          rotation={[1.251, 0, 0]}
+          scale={5.193}
+        />
+        <group name="Area002" position={[0, 1.115, 0]} scale={5.193} />
+        <mesh
+          name="Middle001"
+          geometry={nodes.Middle001.geometry}
+          material={materials["Material.002"]}
+          position={[0, 0.019, 0]}
+          rotation={[Math.PI / 2, 0, 0]}
+        />
+        <mesh
+          name="Middle_001"
+          geometry={nodes.Middle_001.geometry}
+          material={nodes.Middle_001.material}
+          morphTargetDictionary={nodes.Middle_001.morphTargetDictionary}
+          morphTargetInfluences={nodes.Middle_001.morphTargetInfluences}
+          position={[0, 0.019, 0]}
+          rotation={[Math.PI / 2, 0, 0]}
+        />
       </group>
     </group>
   );
 }
 
-useGLTF.preload("./public/assets/model/logo.glb");
+useGLTF.preload("./public/assets/model/bulk_logo1.glb");
