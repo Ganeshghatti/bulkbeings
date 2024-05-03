@@ -1,41 +1,58 @@
-import React, { useRef, useEffect } from "react";
-import { useGLTF } from "@react-three/drei";
+import React, { useRef, useEffect, useLayoutEffect } from "react";
+import { useGLTF, useAnimations } from "@react-three/drei";
+import { useScroll, useMotionValueEvent } from "framer-motion";
+import { useFrame } from "@react-three/fiber";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useThree } from "@react-three/fiber";
 
-export function Basiclogo4(props) {
+gsap.registerPlugin(ScrollTrigger);
+
+export function Basiclogo4() {
   const group = useRef();
   const { nodes, materials } = useGLTF("./public/assets/model/basiclogo3.glb");
-  const { camera, size } = useThree();
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+  const { scrollYProgress } = useScroll();
+  const tl = useRef();
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    console.log(latest);
+  });
+  useFrame((state, delta) => {
+    tl.current.seek(scrollYProgress * tl.current.duration());
+  });
 
-    camera.position.set(0, 0, 5); // Adjust this to ensure the camera is far enough to view the logo
-    camera.lookAt(group.current.position); // Ensure the camera is looking at the origin or the center of the logo
+  useLayoutEffect(() => {
+    tl.current = gsap.timeline({
+      defaults: { duration: 2, ease: "power1.inOut" },
+    });
+    tl.current
+      // .to(group.current.rotation, { y: -1 }, 2)
+      .to(group.current.position, { x: 1 }, 2)
 
-    // Log current position for debugging
-    // console.log(group.current.position);
+      // .to(group.current.rotation, { y: 1 }, 6)
+      .to(group.current.position, { x: -1 }, 6)
 
-    // group.current.position.set(-0.2, 0, 0);
-    // group.current.rotation.set(0, 0, 0);
-    group.current.scale.set(0.11, 0.11, 0.11);
+      // .to(group.current.rotation, { y: 0 }, 11)
+      // .to(group.current.rotation, { x: 1 }, 11)
+      .to(group.current.position, { x: 0 }, 11)
 
-    const handleResize = () => {
-      camera.aspect = size.width / size.height;
-      camera.updateProjectionMatrix();
-    };
+      // .to(group.current.rotation, { y: 0 }, 13)
+      // .to(group.current.rotation, { x: -1 }, 13)
+      .to(group.current.position, { x: 0 }, 13)
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [camera, size]);
+      // .to(group.current.rotation, { y: 0 }, 16)
+      // .to(group.current.rotation, { x: 0 }, 16)
+      .to(group.current.position, { x: 0 }, 16)
+
+      // .to(group.current.rotation, { y: 0 }, 20)
+      // .to(group.current.rotation, { x: 0 }, 20)
+      .to(group.current.position, { x: 0 }, 20);
+  }, []);
+
   return (
-    <group {...props} ref={group} dispose={null}>
+    <group ref={group} dispose={null}>
       <mesh
         geometry={nodes.Middle001.geometry}
         material={materials["Material.003"]}
-        rotation={[Math.PI / 2, 0, 0]}
-        position={[0, 0, 0]}
       />
     </group>
   );

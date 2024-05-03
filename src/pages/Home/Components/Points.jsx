@@ -121,7 +121,6 @@ export default function Points() {
   const [activeIndex, setActiveIndex] = useState(null);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    console.log(latest);
     if (latest >= 0.1 && latest < 0.22) {
       setActivePoint(<Point1 />);
       setActiveIndex(1);
@@ -154,7 +153,6 @@ export default function Points() {
             start: "top top", // Start pinning when the top of .Points hits the top of the viewport
             end: () => `+=700%`, // Ends 600% viewport height after the start
             pin: true,
-            markers: true,
           },
         });
       }, component.current); // Use the ref as the context selector scope
@@ -168,10 +166,9 @@ export default function Points() {
       id="Points"
       className="Points flex justify-between"
       ref={component}
-      style={{ borderBottom: "4px solid white" }}
     >
       <div className="w-1/2" />
-      <div className="w-1/2 flex justify-around border h-screen Points-div">
+      <div className="w-1/2 flex justify-around h-screen Points-div">
         {activePoint}
         <div className="flex items-center flex-col justify-around w-1/5 h-full py-12">
           <div
