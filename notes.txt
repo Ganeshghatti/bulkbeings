@@ -47,3 +47,29 @@
     //   }
     //   ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     // };
+
+
+
+    
+  // useEffect(() => {
+  //   const scrollTrigger = ScrollTrigger.create({
+  //     trigger: ".canvas",
+  //     start: "top top",
+  //     end: "bottom bottom",
+  //     scrub: true,
+  //     markers: true,
+  //     onUpdate: (self) => {
+  //       if (tl.current) {
+  //         tl.current.progress(self.progress);
+  //       }
+  //     },
+  //   });
+
+  //   tl.current = gsap.timeline({ paused: true })
+  //     .to(group.current.position, { y: -3, x: 1.5, ease: "bounce.inOut" }, 0.05)
+  //     .to(group.current.position, { y: -3, x: 1.5, ease: "bounce.inOut" }, 0.125)
+  //     .to(group.current.position, { y: -5, x: -1.5, ease: "bounce.inOut" }, 0.15)
+  //     .to(group.current.position, { y: -5, x: -1.5, ease: "bounce.inOut" }, 0.45);
+
+  //   return () => scrollTrigger.kill();
+  // }, []);

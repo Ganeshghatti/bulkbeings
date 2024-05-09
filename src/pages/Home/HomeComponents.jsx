@@ -4,6 +4,10 @@ import Numbers from "./Components/Numbers";
 import Points from "./Components/Points";
 import PointsTest from "./Components/PointsTest";
 import CaseStudy from "./Components/CaseStudy";
+import Partners from "./Components/Partners";
+import GetAQuote from "./Components/GetAQuote";
+import EcoSustainabilitySoftwares from "./Components/EcoSustainabilitySoftwares";
+import Footer from "../Footer/Footer";
 
 export default function HomeComponents() {
   return (
@@ -13,10 +17,10 @@ export default function HomeComponents() {
       <Numbers />
       <Points />
       <CaseStudy/>
-      <section className="section"></section>
-      <section className="section"></section>
-      <section className="section"></section>
-      <section className="section"></section>
+      <Partners/>
+      <GetAQuote/>
+      <EcoSustainabilitySoftwares/>
+      <Footer/>
     </>
   );
 }

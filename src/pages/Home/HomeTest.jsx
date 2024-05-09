@@ -13,11 +13,7 @@ export default function Home() {
 
   return (
     <div className="parent">
-      <Canvas
-        className="canvas"
-        shadows
-        camera={{ position: [0, 0, 10], fov: 50 }}
-      >
+      <Canvas className="canvas" camera={{ position: [0, 0, 10], fov: 50 }}>
         <ambientLight />
         <spotLight color="#B93D0A" position={[0, 10, 10]} intensity={1} />
         <Basiclogo4 />
