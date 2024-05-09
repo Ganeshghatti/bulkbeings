@@ -1,4 +1,32 @@
 #footer {
-    width: 100vw;
-    height: 160vh;
+  width: 100vw;
+  height: 100vh;
+  .mesh {
+    height: 45%;
+    width: 100%;
   }
+  .footer-container {
+    width: 100vw !important;
+    height: 55%;
+    .copyright {
+      color: #fff;
+      text-align: center;
+      font-family: "DM Sans";
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 23.283px; /* 129.352% */
+      letter-spacing: -0.141px;
+    }
+    .terms-conditions,
+    .privacy-policy {
+      color: #fff;
+      font-family: "DM Sans";
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20.508px; /* 113.931% */
+      letter-spacing: -0.124px;
+    }
+  }
+}

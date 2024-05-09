@@ -22,8 +22,8 @@ export function Basiclogo4() {
 
   const posY = useTransform(
     scrollYProgress,
-    [0.05, 0.1, 0.2, 0.585],
-    [3.4, 2.75, 1.4, -4.3]
+    [0.05, 0.1, 0.2, 0.6],
+    [3.4, 2.75, 1.4, -4.15]
   );
   const posX = useTransform(
     scrollYProgress,
@@ -32,7 +32,7 @@ export function Basiclogo4() {
   );
   const rotation = useTransform(
     scrollYProgress,
-    [0, 0.16, 0.22, 0.295, 0.37, 0.445, 0.52, 0.585],
+    [0, 0.16, 0.22, 0.315, 0.4, 0.485, 0.57, 0.6],
     [
       [0, 0, 0],
       [0, 0, 0],

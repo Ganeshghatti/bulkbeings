@@ -14,7 +14,7 @@ export default function EcoSustainabilitySoftwares() {
     slidesToScroll: 1,
     arrows: true,
     responsive: [
-      { breakpoint: 3000, settings: { slidesToShow: 3, slidesToScroll: 1 } }, // Desktop
+      { breakpoint: 3000, settings: { slidesToShow: 3.5, slidesToScroll: 1 } }, // Desktop
       { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 1 } }, // Tablet
       { breakpoint: 464, settings: { slidesToShow: 1, slidesToScroll: 1 } }, // Mobile
     ],
@@ -22,9 +22,9 @@ export default function EcoSustainabilitySoftwares() {
   return (
     <section
       id="EcoSustainabilitySoftwares"
-      className="EcoSustainabilitySoftwares flex flex-col justify-center items-center w-screen"
+      className="EcoSustainabilitySoftwares flex flex-col justify-center items-center w-full"
     >
-      <div className="container flex flex-col gap-4 border">
+      <div className="EcoSustainabilitySoftwares-container flex flex-col gap-4">
         <p className="title">Eco Sustainability softwares</p>
         <p className="desc">
           We provide exceptional internet and mobile financial software

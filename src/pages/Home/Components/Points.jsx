@@ -121,22 +121,23 @@ export default function Points() {
   const [activeIndex, setActiveIndex] = useState(null);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    if (latest >= 0.1 && latest < 0.22) {
+    console.log(latest)
+    if (latest >= 0.11 && latest < 0.25) {
       setActivePoint(<Point1 />);
       setActiveIndex(1);
-    } else if (latest >= 0.22 && latest < 0.295) {
+    } else if (latest >= 0.25 && latest < 0.32) {
       setActivePoint(<Point2 />);
       setActiveIndex(2);
-    } else if (latest >= 0.295 && latest < 0.37) {
+    } else if (latest >= 0.32 && latest < 0.39) {
       setActivePoint(<Point3 />);
       setActiveIndex(3);
-    } else if (latest >= 0.37 && latest < 0.445) {
+    } else if (latest >= 0.39 && latest < 0.46) {
       setActivePoint(<Point4 />);
       setActiveIndex(4);
-    } else if (latest >= 0.445 && latest < 0.52) {
+    } else if (latest >= 0.46 && latest < 0.53) {
       setActivePoint(<Point5 />);
       setActiveIndex(5);
-    } else if (latest >= 0.52 && latest < 0.64) {
+    } else if (latest >= 0.53 && latest < 0.67) {
       setActivePoint(<Point6 />);
       setActiveIndex(6);
     } else {

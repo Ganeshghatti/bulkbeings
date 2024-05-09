@@ -22,7 +22,7 @@ export default function Partners() {
   return (
     <section
       id="partners"
-      className="partners w-full flex flex-col items-center gap-3 border justify-center"
+      className="partners w-full flex flex-col items-center gap-3 justify-center"
     >
       <p className="title">Our Partners In Growth</p>
       <p className="desc">Collaborators for sustainable business expansion.</p>
