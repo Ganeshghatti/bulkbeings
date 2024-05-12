@@ -7,9 +7,9 @@ import { motion } from "framer-motion";
 export default function Numbers() {
   return (
     <section className="Numbers w-full flex items-center" id="Numbers">
-      <div className="flex flex-col w-1/2 gap-4 items-start">
+      <div className="flex flex-col w-1/2 gap-4 items-start md:w-full md:items-center">
         <motion.p
-          className="title"
+          className="title md:text-center"
           
           initial={{
             opacity: 0,
@@ -27,7 +27,7 @@ export default function Numbers() {
           Affordable Software Solutions
         </motion.p>
         <motion.p
-          className="desc"
+          className="desc md:text-center"
           
           initial={{
             opacity: 0,

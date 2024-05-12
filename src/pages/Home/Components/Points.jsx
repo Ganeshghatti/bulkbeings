@@ -13,14 +13,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Point1 = () => {
   return (
-    <div className="w-2/3 flex flex-col h-screen justify-center gap-4 Point1">
+    <div className="w-2/3 md:w-11/12 md:self-center md:gap-2 flex flex-col justify-center gap-4 Point1">
       <p className="numbertext">01</p>
       <p className="title">Solutions</p>
       <p className="desc">
         Discover the power of unified software solutions with our platform.
         Streamline your business processes, enhance productivity, and drive
-        innovation with our integrated approach. <br />
-        <br />
+        innovation with our integrated approach. <br /><br />
         Tailored for diverse industries, our platform offers scalable, secure,
         and user-friendly tools to meet your unique needs and propel your
         business forward.
@@ -30,14 +29,13 @@ const Point1 = () => {
 };
 const Point2 = () => {
   return (
-    <div className="w-2/3 flex flex-col h-screen justify-center gap-4">
+    <div className="w-2/3 md:w-11/12 md:self-center md:gap-2 flex flex-col justify-center gap-4">
       <p className="numbertext">02</p>
       <p className="title">Solutions</p>
       <p className="desc">
         Discover the power of unified software solutions with our platform.
         Streamline your business processes, enhance productivity, and drive
-        innovation with our integrated approach. <br />
-        <br />
+        innovation with our integrated approach. <br /><br />
         Tailored for diverse industries, our platform offers scalable, secure,
         and user-friendly tools to meet your unique needs and propel your
         business forward.
@@ -47,14 +45,13 @@ const Point2 = () => {
 };
 const Point3 = () => {
   return (
-    <div className="w-2/3 flex flex-col h-screen justify-center gap-4">
+    <div className="w-2/3 md:w-11/12 md:self-center md:gap-2 flex flex-col justify-center gap-4">
       <p className="numbertext">03</p>
       <p className="title">Solutions</p>
       <p className="desc">
         Discover the power of unified software solutions with our platform.
         Streamline your business processes, enhance productivity, and drive
-        innovation with our integrated approach. <br />
-        <br />
+        innovation with our integrated approach. <br /><br />
         Tailored for diverse industries, our platform offers scalable, secure,
         and user-friendly tools to meet your unique needs and propel your
         business forward.
@@ -64,14 +61,13 @@ const Point3 = () => {
 };
 const Point4 = () => {
   return (
-    <div className="w-2/3 flex flex-col h-screen justify-center gap-4">
+    <div className="w-2/3 md:w-11/12 md:self-center md:gap-2 flex flex-col justify-center gap-4">
       <p className="numbertext">04</p>
       <p className="title">Solutions</p>
       <p className="desc">
         Discover the power of unified software solutions with our platform.
         Streamline your business processes, enhance productivity, and drive
-        innovation with our integrated approach. <br />
-        <br />
+        innovation with our integrated approach. <br /><br />
         Tailored for diverse industries, our platform offers scalable, secure,
         and user-friendly tools to meet your unique needs and propel your
         business forward.
@@ -81,14 +77,13 @@ const Point4 = () => {
 };
 const Point5 = () => {
   return (
-    <div className="w-2/3 flex flex-col h-screen justify-center gap-4">
+    <div className="w-2/3 md:w-11/12 md:self-center md:gap-2 flex flex-col justify-center gap-4">
       <p className="numbertext">05</p>
       <p className="title">Solutions</p>
       <p className="desc">
         Discover the power of unified software solutions with our platform.
         Streamline your business processes, enhance productivity, and drive
-        innovation with our integrated approach. <br />
-        <br />
+        innovation with our integrated approach. <br /><br />
         Tailored for diverse industries, our platform offers scalable, secure,
         and user-friendly tools to meet your unique needs and propel your
         business forward.
@@ -98,14 +93,13 @@ const Point5 = () => {
 };
 const Point6 = () => {
   return (
-    <div className="w-2/3 flex flex-col h-screen justify-center gap-4">
+    <div className="w-2/3 md:w-11/12 md:self-center md:gap-2 flex flex-col justify-center gap-4">
       <p className="numbertext">06</p>
       <p className="title">Solutions</p>
       <p className="desc">
         Discover the power of unified software solutions with our platform.
         Streamline your business processes, enhance productivity, and drive
-        innovation with our integrated approach. <br />
-        <br />
+        innovation with our integrated approach. <br /><br />
         Tailored for diverse industries, our platform offers scalable, secure,
         and user-friendly tools to meet your unique needs and propel your
         business forward.
@@ -121,7 +115,7 @@ export default function Points() {
   const [activeIndex, setActiveIndex] = useState(null);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    console.log(latest)
+    console.log(latest);
     if (latest >= 0.11 && latest < 0.25) {
       setActivePoint(<Point1 />);
       setActiveIndex(1);
@@ -147,31 +141,46 @@ export default function Points() {
 
   useEffect(() => {
     if (component.current) {
-      const ctx = gsap.context(() => {
-        gsap.to(".Points-div", {
-          scrollTrigger: {
-            trigger: ".Points-div",
-            start: "top top", // Start pinning when the top of .Points hits the top of the viewport
-            end: () => `+=700%`, // Ends 600% viewport height after the start
-            pin: true,
-          },
-        });
-      }, component.current); // Use the ref as the context selector scope
+      if (window.innerWidth > 867) {
+        const ctx = gsap.context(() => {
+          gsap.to(".Points-div", {
+            scrollTrigger: {
+              trigger: ".Points-div",
+              start: "top top", // Start pinning when the top of .Points hits the top of the viewport
+              end: () => `+=700%`, // Ends 600% viewport height after the start
+              pin: true,
+            },
+          });
+        }, component.current); // Use the ref as the context selector scope
 
-      return () => ctx.revert();
+        return () => ctx.revert();
+      } else {
+        const ctx = gsap.context(() => {
+          gsap.to(".Points-div", {
+            scrollTrigger: {
+              trigger: ".Points-div",
+              start: "bottom bottom", // Start pinning when the top of .Points hits the top of the viewport
+              end: () => `+=700%`, // Ends 600% viewport height after the start
+              pin: true,
+            },
+          });
+        }, component.current); // Use the ref as the context selector scope
+
+        return () => ctx.revert();
+      }
     }
   }, []);
 
   return (
     <section
       id="Points"
-      className="Points flex justify-between"
+      className="Points flex justify-between md:flex-col md:justify-start"
       ref={component}
     >
-      <div className="w-1/2" />
-      <div className="w-1/2 flex justify-around h-screen Points-div">
+      <div className="w-1/2 md:w-full Points-LogoDiv" />
+      <div className="w-1/2 md:w-full Points-div flex justify-around md:flex-col-reverse md:self-end">
         {activePoint}
-        <div className="flex items-center flex-col justify-around w-1/5 h-full py-12">
+        <div className="flex items-center flex-col justify-around w-1/5 h-full md:h-auto py-12 md:py-4 md:flex-row md:w-full">
           <div
             className={`w-1.5 ${
               activeIndex == 1 ? "bg-white" : "bg-[#2F2F2F]"

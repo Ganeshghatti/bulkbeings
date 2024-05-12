@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function Basiclogo4() {
   const group = useRef();
-  const { nodes, materials } = useGLTF("./public/assets/model/basiclogo3.glb");
+  const { nodes, materials } = useGLTF("./assets/model/basiclogo3.glb");
   const { scrollYProgress } = useScroll();
   const tl = useRef();
 
@@ -63,4 +63,4 @@ export function Basiclogo4() {
   );
 }
 
-useGLTF.preload("./public/assets/model/basiclogo3.glb");
+useGLTF.preload("./assets/model/basiclogo3.glb");

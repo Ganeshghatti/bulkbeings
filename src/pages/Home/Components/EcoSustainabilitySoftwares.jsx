@@ -12,7 +12,7 @@ export default function EcoSustainabilitySoftwares() {
     autoplaySpeed: 3000,
     slidesToShow: 2, // Default for desktop
     slidesToScroll: 1,
-    arrows: true,
+    arrows: false,
     responsive: [
       { breakpoint: 3000, settings: { slidesToShow: 3.5, slidesToScroll: 1 } }, // Desktop
       { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 1 } }, // Tablet
